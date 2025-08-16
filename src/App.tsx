@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -5,6 +6,7 @@ import Menu from "./components/Menu";
 import Reservations from "./components/Reservations";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
 
 interface CartItem {
   id: number;
@@ -62,9 +64,19 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <Header cartItems={cartItems} setIsCartOpen={setIsCartOpen} />
-      <Hero />
-      <Menu addToCart={addToCart} />
-      <Reservations />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <Menu addToCart={addToCart} />
+              <Reservations />
+            </>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+      </Routes>
       <Footer />
       <Cart
         isOpen={isCartOpen}
