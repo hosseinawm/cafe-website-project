@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, ShoppingCart, Coffee } from "lucide-react";
 
 interface CartItem {
@@ -31,37 +32,45 @@ export default function Header({ cartItems, setIsCartOpen }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link
+            to="/"
+            onClick={() => scrollToSection("home")}
+            className="flex items-center space-x-2"
+          >
             <Coffee className="h-8 w-8 text-amber-600" />
             <span className="text-2xl font-bold text-gray-900">BrewHaven</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <button
+            {/* <Link
+              to="/"
               onClick={() => scrollToSection("home")}
               className="text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium"
             >
               Home
-            </button>
-            <button
+            </Link> */}
+            <Link
+              to="/"
               onClick={() => scrollToSection("menu")}
               className="text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium"
             >
               Menu
-            </button>
-            <button
+            </Link>
+            <Link
+              to="/"
               onClick={() => scrollToSection("reservations")}
               className="text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium"
             >
               Reservations
-            </button>
-            <button
+            </Link>
+            <Link
+              to="/"
               onClick={() => scrollToSection("contact")}
               className="text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium"
             >
               Contact
-            </button>
+            </Link>
           </nav>
 
           {/* Cart and Mobile Menu */}
@@ -78,9 +87,12 @@ export default function Header({ cartItems, setIsCartOpen }: HeaderProps) {
               )}
             </button>
 
-            <button className="hidden md:inline-block text-gray-700 hover:text-amber-600 font-medium transition duration-200">
-              Login / Register
-            </button>
+            <Link
+              to="/login"
+              className="hidden md:inline-block text-gray-700 hover:text-amber-600 font-medium transition duration-200"
+            >
+              Sign in
+            </Link>
 
             {/* Mobile menu button */}
             <button
@@ -100,33 +112,40 @@ export default function Header({ cartItems, setIsCartOpen }: HeaderProps) {
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg border-t animate-in slide-in-from-top-2">
             <nav className="px-4 py-4 space-y-4">
-              <button className="block w-full text-left text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium py-2">
-                Login / Register
-              </button>
-              <button
+              <Link
+                to="/login"
+                className="block w-full text-left text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium py-2"
+              >
+                Sign in
+              </Link>
+              <Link
+                to="/"
                 onClick={() => scrollToSection("home")}
                 className="block w-full text-left text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium py-2"
               >
                 Home
-              </button>
-              <button
+              </Link>
+              <Link
+                to="/"
                 onClick={() => scrollToSection("menu")}
                 className="block w-full text-left text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium py-2"
               >
                 Menu
-              </button>
-              <button
+              </Link>
+              <Link
+                to="/"
                 onClick={() => scrollToSection("reservations")}
                 className="block w-full text-left text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium py-2"
               >
                 Reservations
-              </button>
-              <button
+              </Link>
+              <Link
+                to="/"
                 onClick={() => scrollToSection("contact")}
                 className="block w-full text-left text-gray-700 hover:text-amber-600 transition-colors duration-200 font-medium py-2"
               >
                 Contact
-              </button>
+              </Link>
             </nav>
           </div>
         )}
